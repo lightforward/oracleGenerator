@@ -1,0 +1,78 @@
+server:
+  port: 8000
+  tomcat.max-threads: 200
+  servlet:
+    context-path: /
+img:
+  location: C://workdir/deploy/img
+excel:
+  location: C://
+download:
+  location: C://workdir/deploy
+spring:
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${img.location},file:${excel.location},file:../commonPicturesHouse/
+  application:
+    name: backend
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    name: EQPT_TWO
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:oracle:thin:@192.168.100.89:1521:ORCL
+    platform: oracle
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: EQPT_TWO
+    password: 123456
+    initial-size: 5
+    max-wait: 10000
+    validation-query: select 1
+    test-on-borrow: false
+    test-while-idle: true
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 60000
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    servlet:
+      content-type: text/html
+    prefix: classpath:/templates/
+  servlet:
+    multipart:
+      max-file-size: 104857600
+      max-request-size: 20971652
+
+mybatis:
+  mapper-locations: classpath:mappering/*.xml
+
+security:
+  jwt:
+    token-expiration-time: 30
+    refresh-token-exp-time: 2
+    token-signing-key: air_secretKey
+
+logging:
+  level:
+    root: INFO
+    com.what.cloud: DEBUG
+
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+adb:
+  path: E:\\Android\\android dev tool\\sdk\\platform-tools
+
+xian:
+  number: 910
+eqpt:
+  kindNumber: W
+kind:
+  code: J
